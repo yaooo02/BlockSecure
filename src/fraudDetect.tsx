@@ -15,12 +15,15 @@ const TransactionForm = () => {
   const [amount, setAmount] = useState<string>(''); 
   const [transactionHash, setTransactionHash] = useState<string | null>(null);
   const [isTransactionPending, setIsTransactionPending] = useState<boolean>(false);
-  const [isFraudulent, setIsFraudulent] = useState<boolean | null>(null);
+  // const [isFraudulent, setIsFraudulent] = useState<boolean | null>(null);
+  const [, setIsFraudulent] = useState<boolean | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [isValid, setIsValid] = useState<boolean | null>(null);
   const [isAmountValid, setIsAmountValid] = useState<boolean | null>(null);
   const [isTransactionDone, setIsTransactionDone] = useState<boolean>(false);
-  const [transactionHistoryCount, setTransactionHistoryCount] = useState<number | null>(null);
+  // const [transactionHistoryCount, setTransactionHistoryCount] = useState<number | null>(null);
+  const [, setTransactionHistoryCount] = useState<number | null>(null);
+
 
   const [isNoBalanceOpen, setIsNoBalanceOpen] = useState(false);
   const [isScamListOpen, setIsScamListOpen] = useState(false);
@@ -151,7 +154,7 @@ const checkScamList = async (address: string): Promise<boolean> => {
       setTransactionHash(txResponse.hash);
       setIsTransactionPending(true);
 
-      provider.once(txResponse.hash, (receipt) => {
+      provider.once(txResponse.hash, () => {
         setIsTransactionPending(false);
         setIsTransactionDone(true);
       });

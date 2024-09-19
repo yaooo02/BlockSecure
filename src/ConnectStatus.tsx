@@ -5,7 +5,8 @@ import { useAccount } from 'wagmi'; // Ensure wagmi is installed and configured
 // ConnectionStatus Component
 const ConnectionStatus: React.FC = () => {
   const { isConnected, isDisconnected } = useAccount();
-  const [status, setStatus] = useState<string>('Connecting...');
+  // const [status, setStatus] = useState<string>('Connecting...');
+  const [, setStatus] = useState<string>('Connecting...');
 
   // Handle account change
   useEffect(() => {
